@@ -28,5 +28,5 @@ OpenClash 配置繁多，初始配置请自行参考 OpenClash 的 wiki，下面
 
 插件设置 - GEO 数据库订阅 把 GeoIP Dat 和 GeoSite 这两个库的自动更新打开，都选 Loyalsoldier 的版本，这个是用来给 mosdns 用的。
 
-插件设置 - 开发者选项里，我们自定义一下 iptables 规则。
+插件设置 - 开发者选项里，我们自定义一下 iptables 规则。其中 /etc/mosdns/rule/geoip2ipset.sh 这个脚本可以根据 GeoIP 数据库来生成对应的 ipset，我这里只处理了 IPv4 的规则。IPv6 没管，因为也用不到。内容如下，这个文件放到路由器上后，记得要执行 chmod a+x /etc/mosdns/rule/geoip2ipset.sh 给它赋予可执行权限。
 
