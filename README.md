@@ -33,3 +33,10 @@ OpenClash 配置繁多，初始配置请自行参考 OpenClash 的 wiki，下面
 ## Mosdns配置
 
 选自定义配置文件，取消 DNS 转发的勾，然后我就直接贴配置了，注意 Clash DNS 端口要改成你自己在 OpenClash 里的配置，LAN IP-CIDR 也要改成你自己的内网配置，这里 mosdns 监听了 5335 端口。
+
+## AdGuardHome配置
+在 luci 页面上，开启端口重定向，选择重定向53端口到AdGuardHome，这里注意 AdGuardHome 本身不要监听 53 端口，把 53 端口留给 dnsmasq，AdGuardHome 设置一个其它的端口就可以了。
+
+在 Web 管理页面上，设置 - DNS 设置中，上游 DNS 服务器内只填写一个 mosdns 的地址 127.0.0.1:5335 #mosdns，私人反向 DNS 服务器写上 127.0.0.1 #dnsmasq。DNS 缓存配置里面，缓存大小看你内存大小填写，乐观缓存勾上。
+
+对于不想走代理的设备，可以在设置 - 客户端设置中添加，并且把上游 DNS 服务器设置成 127.0.0.1。
