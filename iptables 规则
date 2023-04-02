@@ -1,4 +1,3 @@
-`
 en_mode=$(uci -q get openclash.config.en_mode)
 proxy_port=$(uci -q get openclash.config.proxy_port)
 
@@ -12,4 +11,3 @@ fi
 
 LOG_OUT "restart adguardhome"
 /etc/init.d/AdGuardHome restart
-`
