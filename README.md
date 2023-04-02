@@ -1,9 +1,21 @@
 原文见[基于 DNS 的内网透明代理分流方案](https://songchenwen.com/tproxy-split-by-dns/)
-实现效果
-# 完美保留了 AdGuardHome 的各种功能
-# 基于 DNS 的流量分流，国内流量绕过 Clash 核心
-# 用 Fake-IP 模式来解决 DNS 污染的问题，但限制 Fake-IP 的范围，不需要代理的域名仍返回正常 IP
-# 不用再费心找无污染的 DNS 服务器，使用运营商提供的 DNS 也没问题
-# 因为彻底解决了 DNS 污染，可以放心缓存 DNS 请求结果，开启 AdGuardHome 的乐观缓存后，DNS 平均处理时间降到 3ms
-# 完美兼容 IPv6。国内流量可正常使用 IPv6 服务。只要代理有 IPv6 出口，那国外也可正常使用。（使用 IPv6 居然还有意料之外的好处，后悔没早开）
-# 可以通过 AdGuardHome 的 Web 管理页面轻松切换内网设备是否走代理
+
+OpenClash
+
+OpenClash 配置繁多，初始配置请自行参考 OpenClash 的 wiki，下面只说换成本文方案所需的配置。
+
+插件设置 - 模式设置 - 运行模式： 切换到 Fake-IP（增强）模式
+
+插件设置 - DNS 设置 - 本地 DNS 劫持 选择 禁用
+
+插件设置 - 流量控制 - 绕过中国大陆 IP 取消勾选
+插件设置 - 流量控制 - 仅允许内网 开启
+插件设置 - IPv6 设置 这页的选项全都关闭就行了
+覆写设置 - 常规设置 这里都不用改，只需要记住 DNS 监听，后面配置 mosdns 要用
+覆写设置 - DNS 设置 - 自定义上游 DNS 服务器 勾选
+覆写设置 - DNS 设置 - 追加上游 DNS 勾选
+覆写设置 - DNS 设置 - 追加默认 DNS 勾选
+覆写设置 - DNS 设置 - Fake-IP 持久化 勾选
+覆写设置 - DNS 设置 页面下方 NameServer，FallBack，Default-NameServer 里的 DNS 服务器全都取消勾选，我们只用运营商提供的 DNS 服务器就够了，一般运营商 DNS 都是最快的，也是 CDN 最优化的。
+插件设置 - GEO 数据库订阅 把 GeoIP Dat 和 GeoSite 这两个库的自动更新打开，都选 Loyalsoldier 的版本，这个是用来给 mosdns 用的。
+插件设置 - 开发者选项里，我们自定义一下 iptables 规则，增加如下这些行。
