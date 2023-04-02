@@ -1,6 +1,6 @@
 原文见[基于 DNS 的内网透明代理分流方案](https://songchenwen.com/tproxy-split-by-dns/)
 
-OpenClash配置
+# OpenClash配置
 
 OpenClash 配置繁多，初始配置请自行参考 OpenClash 的 wiki，下面只说换成本文方案所需的配置。
 
