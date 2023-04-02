@@ -30,3 +30,5 @@ OpenClash 配置繁多，初始配置请自行参考 OpenClash 的 wiki，下面
 
 插件设置 - 开发者选项里，我们自定义一下 iptables 规则。其中 /etc/mosdns/rule/geoip2ipset.sh 这个脚本可以根据 GeoIP 数据库来生成对应的 ipset，我这里只处理了 IPv4 的规则。IPv6 没管，因为也用不到。内容如下，这个文件放到路由器上后，记得要执行 chmod a+x /etc/mosdns/rule/geoip2ipset.sh 给它赋予可执行权限。
 
+## Mosdns配置
+选自定义配置文件，取消 DNS 转发的勾，然后我就直接贴配置了，注意 Clash DNS 端口要改成你自己在 OpenClash 里的配置，LAN IP-CIDR 也要改成你自己的内网配置，这里 mosdns 监听了 5335 端口。
