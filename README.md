@@ -1,4 +1,5 @@
 原文见[基于 DNS 的内网透明代理分流方案](https://songchenwen.com/tproxy-split-by-dns/)
+
 ![](https://github.com/jencoxu/openclash-mosdns/blob/8bd87cc5b7cf419f5548ac390c16448d62a0bd53/DNS%E5%88%86%E6%B5%81%E7%A4%BA%E6%84%8F%E5%9B%BE.jpeg)
 
 ## OpenClash配置
