@@ -12,7 +12,7 @@ filename="${filename%.*}"
 filename="$tmpdir/${filename}_$tag.txt"
 
 if [ "$tag" == "telegram" ]; then
-    wget --timeout 5 -O "$filename" 'https://core.telegram.org/resources/cidr.txt'
+    wget --timeout 5 -O "$filename" 'https://github.com/jencoxu/openclash-mosdns/raw/main/telegramcidr.txt'
     if [ "$?" != "0" ]; then
          /usr/bin/mosdns v2dat unpack-ip -o "$tmpdir" "$geoipfile:$tag"
     fi
